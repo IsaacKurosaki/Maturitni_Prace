@@ -45,7 +45,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.isaac.App</mainClass>
+                            <mainClass>com.isaac.Kviz</mainClass>
                         </configuration>
                     </execution>
                 </executions>
