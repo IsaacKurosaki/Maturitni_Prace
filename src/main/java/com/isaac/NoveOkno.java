@@ -1,5 +1,6 @@
 package com.isaac;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,6 +10,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -45,7 +47,7 @@ public class NoveOkno {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(layout);
         scrollPane.setFitToWidth(true);
-        Scene scene = new Scene(scrollPane, 800, 600);
+        Scene scene = new Scene(scrollPane, 800, 400);
 
         // Načtení css stylu pro kvíz
         String css = this.getClass().getResource("/com/isaac/kviz.css").toExternalForm();
@@ -89,7 +91,15 @@ public class NoveOkno {
         if (aktualniIndexOtazky < otazky.size()) {
             Otazka otazka = otazky.get(aktualniIndexOtazky);
             Label lblOtazka = new Label((aktualniIndexOtazky + 1) + ". " + otazka.getTextOtazky());
+            lblOtazka.setWrapText(true);
+
+            HBox answersAlingmentBox = new HBox();
+            answersAlingmentBox.setAlignment(Pos.CENTER_LEFT);
+            VBox.setMargin(answersAlingmentBox, new Insets(0, 0, 0, layout.getWidth() * 0.2));
+
+            VBox answersBox = new VBox(5);
             ToggleGroup skupina = new ToggleGroup();
+            
             RadioButton btnA = new RadioButton("A) " + otazka.getMoznostA());
             btnA.setToggleGroup(skupina);
             btnA.setUserData("A");
@@ -99,7 +109,13 @@ public class NoveOkno {
             RadioButton btnC = new RadioButton("C) " + otazka.getMoznostC());
             btnC.setToggleGroup(skupina);
             btnC.setUserData("C");
-            layout.getChildren().addAll(lblOtazka, btnA, btnB, btnC);
+
+            answersBox.getChildren().addAll(btnA, btnB, btnC);
+            answersAlingmentBox.getChildren().add(answersBox);
+
+
+            layout.getChildren().addAll(lblOtazka, answersAlingmentBox);
+
             Button btnDalsiOtazka = new Button("Další otázka");
             btnDalsiOtazka.setOnAction(e -> {
                 String vybranaOdpoved = (String) skupina.getSelectedToggle().getUserData();
@@ -130,7 +146,25 @@ public class NoveOkno {
             questionBox.getStyleClass().add("question-box");
 
             Label lblQuestion = new Label(otazka.getTextOtazky());
-            Label lblCorrectAnswer = new Label("Správná odpověď: " + otazka.getSpravnaOdpoved());
+            lblQuestion.setWrapText(true);
+            
+            String correctAnswerText;
+            switch (otazka.getSpravnaOdpoved()) {
+                case "A":
+                    correctAnswerText = otazka.getMoznostA();
+                    break;
+                case "B":
+                    correctAnswerText = otazka.getMoznostB();
+                    break;
+                case "C":
+                    correctAnswerText = otazka.getMoznostC();
+                    break;
+                default:
+                    correctAnswerText = "Unknown";
+                    break;
+            }
+
+            Label lblCorrectAnswer = new Label("Správná odpověď: " + correctAnswerText);
             lblCorrectAnswer.getStyleClass().add("correct-answer");
 
             questionBox.getChildren().addAll(lblQuestion, lblCorrectAnswer);
