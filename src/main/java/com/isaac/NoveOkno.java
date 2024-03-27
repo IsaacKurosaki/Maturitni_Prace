@@ -58,33 +58,6 @@ public class NoveOkno {
         stage.show();
     }
 
-    // Formulář pro přidání otázky pro hráče
-    private void zobrazFormularProPridaniOtazky() {
-        layout.getChildren().clear();
-        
-        TextField txtOtazka = new TextField();
-        txtOtazka.setPromptText("Text otázky");
-        TextField txtA = new TextField();
-        txtA.setPromptText("Možnost A");
-        TextField txtB = new TextField();
-        txtB.setPromptText("Možnost B");
-        TextField txtC = new TextField();
-        txtC.setPromptText("Možnost C");
-
-        ComboBox<String> cbOdpoved = new ComboBox<>();
-        cbOdpoved.getItems().addAll("A", "B", "C");
-        cbOdpoved.setPromptText("Správná odpověď");
-
-        Button btnPridat = new Button("Přidat");
-        btnPridat.setOnAction(e -> {
-            PripojeniDatabaze.pridatOtazkuDoDatabaze(txtOtazka.getText(), txtA.getText(), txtB.getText(), txtC.getText(), cbOdpoved.getValue());
-            Kviz kviz = new Kviz();
-            kviz.start(stage);
-        });
-
-        layout.getChildren().addAll(txtOtazka, txtA, txtB, txtC, cbOdpoved, btnPridat);
-    }
-
     // Aktualizuje UI otázek do konce kvízu (pak zobrazí výsledky)
     private void aktualizujObsahOtazky() {
         layout.getChildren().clear();
@@ -178,11 +151,7 @@ public class NoveOkno {
             kviz.start(stage);
         });
 
-        // Tlačítko pro zobrazení formuláře pro přídání otázky
-        Button btnPridatOtazku = new Button("Přidat otázku");
-        btnPridatOtazku.setOnAction(e -> zobrazFormularProPridaniOtazky());
-
-        layout.getChildren().addAll(btnZnovu, btnPridatOtazku);
+        layout.getChildren().addAll(btnZnovu);
     }
 
 }

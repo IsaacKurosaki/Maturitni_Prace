@@ -33,6 +33,9 @@ public class PripojeniDatabaze {
             case "Zeměpis":
                 tabulka = "zemepisne_otazky";
                 break;
+            case "Otázky od hráčů":
+                tabulka = "otazky_od_hracu";
+                break;    
             default:
                 System.out.println("Neznámé téma: " + tema);
                 return otazky;
