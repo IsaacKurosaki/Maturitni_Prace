@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Pon 25. bře 2024, 16:06
+-- Vytvořeno: Čtv 28. bře 2024, 10:15
 -- Verze serveru: 10.4.32-MariaDB
 -- Verze PHP: 8.2.12
 
@@ -128,7 +128,21 @@ INSERT INTO `hraci` (`id_hrace`, `Jmeno`, `Skore`) VALUES
 (6, 'PepíkTest', 1),
 (7, 'TErka', 1),
 (8, 'ded', 0),
-(9, 'TestProJItuš', 2);
+(9, 'TestProJItuš', 2),
+(10, 'dadad', 2),
+(11, 'adadadad', 0),
+(12, 'dadadad', 1),
+(13, 'dadad', 2),
+(14, 'dadada', 1),
+(15, 'dadadadadad', 1),
+(16, 'OKEEY', 1),
+(17, 'ouwkey', 5),
+(18, 'Dejvid Mustain', 3),
+(19, 'Pepuše', 2),
+(20, 'adad', 3),
+(21, 'ded', 1),
+(22, 'ada', 3),
+(23, 'Terka', 2);
 
 -- --------------------------------------------------------
 
@@ -192,8 +206,10 @@ CREATE TABLE `otazky_od_hracu` (
 
 INSERT INTO `otazky_od_hracu` (`id_otazky`, `otazka`, `A`, `B`, `C`, `odpoved`) VALUES
 (1, 'Jaké přijmení má Jituš', 'Furrýk', 'Fjůbacherová ', 'Furbacherová ', 'C'),
-(2, 'adad', 'ada', 'ada', 'dad', 'A'),
-(3, 'Ahoj Jituš, jak se dnes máš', 'Nic moc', 'Bylo líp', 'SKVĚLE! Jelikož si konečně dodělal tu práci na kterou si kašlal celej rok a já byla na nervy >:(!!!', 'C');
+(2, 'Funguje to?\r\n', 'Leda ve snu', 'Funguje a na první pokus!', 'Nikdy to ani nepůjde', 'B'),
+(3, 'Ahoj Jituš, jak se dnes máš', 'Nic moc', 'Bylo líp', 'SKVĚLE! Jelikož si konečně dodělal tu práci na kterou si kašlal celej rok a já byla na nervy >:(!!!', 'C'),
+(4, 'Je psaní dokumentace zábava?', 'Ne', 'Ne', 'Ne', 'A'),
+(5, 'Test', 'test', 'test', 'test', 'C');
 
 -- --------------------------------------------------------
 
@@ -284,13 +300,13 @@ ALTER TABLE `zemepisne_otazky`
 -- AUTO_INCREMENT pro tabulku `hraci`
 --
 ALTER TABLE `hraci`
-  MODIFY `id_hrace` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_hrace` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pro tabulku `otazky_od_hracu`
 --
 ALTER TABLE `otazky_od_hracu`
-  MODIFY `id_otazky` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_otazky` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pro tabulku `zemepisne_otazky`
